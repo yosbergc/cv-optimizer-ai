@@ -1,5 +1,8 @@
 import { Select } from "@/components/base/select/select";
 import { SelectItem } from "../base/select/select-item";
+import { Button } from "@/components/base/buttons/button";
+import { TextArea } from "@/components/base/textarea/textarea";
+
 function Form() {
     const items = [
         { label: 'Frontend Developer', id: 'frontend'},
@@ -32,7 +35,7 @@ function Form() {
             <Select
                 isRequired
                 label="Tu profesión"
-                placeholder="Selecciona tu profesión"
+                placeholder="Frontend Developer"
                 tooltip="Elije la profesión que consideres que más se acerca a tu día a día o al trabajo que estás aplicando."
                 items={items}
                 className="mt-4"
@@ -47,6 +50,8 @@ function Form() {
                     </SelectItem>
                 ))}
             </Select>
+            <TextArea isRequired placeholder="Estamos buscando un desarrollador web que..." label="Descripción del trabajo" rows={5} className="mt-4"/>
+            <Button color="primary" size="md" className="mt-4">Optimiza mi CV</Button>
         </section>
     )
 }
