@@ -1,7 +1,10 @@
+'use client'
 import { Select } from "@/components/base/select/select";
 import { SelectItem } from "../base/select/select-item";
 import { Button } from "@/components/base/buttons/button";
 import { TextArea } from "@/components/base/textarea/textarea";
+import { Input } from "@/components/base/input/input";
+import { FileUpload, getReadableFileSize } from "@/components/application/file-upload/file-upload-base";
 
 function Form() {
     const items = [
@@ -30,7 +33,7 @@ function Form() {
         { label: 'IT Recruiter', id: 'it recruiter'},
     ]
     return (
-        <section className="flex flex-col w-full max-w-4xl bg-white p-4 rounded-xl border-2 border-gray-300 max-w-xl">
+        <section className="flex flex-col w-full max-w-4xl bg-white p-8 rounded-xl border-2 border-gray-300 max-w-xl">
             <h2 className="text-center font-extrabold text-slate-800 text-xl">Llena el formulario y optén tu CV optimizado</h2>
             <Select
                 isRequired
@@ -50,7 +53,13 @@ function Form() {
                     </SelectItem>
                 ))}
             </Select>
+            <Input isRequired label="Tu correo electrónico" hint="Nos ayudará a enviarte tu CV a tu correo en un archivo adjunto." placeholder="olivia@gmail.com" className="mt-4"/>
             <TextArea isRequired placeholder="Estamos buscando un desarrollador web que..." label="Descripción del trabajo" rows={5} className="mt-4"/>
+            <FileUpload.Root className="mt-4">
+                <FileUpload.DropZone allowsMultiple={false} accept="application/pdf" hint="Tu CV actual en formato PDF">
+
+                </FileUpload.DropZone>
+            </FileUpload.Root>
             <Button color="primary" size="md" className="mt-4">Optimiza mi CV</Button>
         </section>
     )
